@@ -14,6 +14,15 @@ app.layout = html.Div(children=[
    '''),
    ])
 
+#Call Back Example
+@app.callback(
+   Output("name_out", "name_out1"), 
+   Input("name_in", "name_in1"),
+)
+def some_function(name_in1):
+   return value
+
 if __name__ == '__main__':
    app.run_server(debug=True)
+   #app.run_server(host='hostname', port='portnumber', debug=True, threaded=True)
    
