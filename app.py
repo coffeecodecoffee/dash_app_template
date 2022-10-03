@@ -1,28 +1,19 @@
-# Run this app with 'python app.py' and 
-# visit http://127.0.0.1:8050/ in your web browser
+"""
+Dash app instance and stylesheet declaration
+https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/explorer/
+"""
 
-from dash import Dash, html, doc
+import dash
+from dash import Input, Output, State, dcc, html
+import dash_bootstrap_components as dbc
 import pandas as pd
+from datetime import date
 
-app = Dash(__name__)
+dbc_css = (
+   "http://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates@v1.0.4/dbc.min.css"
+) 
 
-app.layout = html.Div(children=[
-   html.H1(children='Hello Dash'),
-   
-   htm.Div(children='''
-      Dash: A web application framework for your data.
-   '''),
-   ])
-
-#Call Back Example
-@app.callback(
-   Output("name_out", "name_out1"), 
-   Input("name_in", "name_in1"),
-)
-def some_function(name_in1):
-   return value
-
-if __name__ == '__main__':
-   app.run_server(debug=True)
-   #app.run_server(host='hostname', port='portnumber', debug=True, threaded=True)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SUPERHERO, dbc_css])
+server = app.server
+app.config.suppress_callback_exceptions=()
    
